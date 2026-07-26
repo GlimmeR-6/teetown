@@ -3,6 +3,7 @@
 #ifndef GAME_CLIENT_COMPONENTS_CAMERA_H
 #define GAME_CLIENT_COMPONENTS_CAMERA_H
 #include <base/vmath.h>
+
 #include <game/client/component.h>
 
 class CCamera : public CComponent
@@ -40,7 +41,7 @@ public:
 private:
 	enum
 	{
-		CAMTYPE_UNDEFINED=-1,
+		CAMTYPE_UNDEFINED = -1,
 		CAMTYPE_SPEC,
 		CAMTYPE_PLAYER,
 	};

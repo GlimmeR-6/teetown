@@ -3,9 +3,8 @@
 #ifndef ENGINE_SHARED_JSONPARSER_H
 #define ENGINE_SHARED_JSONPARSER_H
 
-#include <engine/storage.h>
-
 #include <engine/external/json-parser/json.h>
+#include <engine/storage.h>
 
 class CJsonParser
 {

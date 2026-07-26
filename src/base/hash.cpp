@@ -1,8 +1,8 @@
 /* (c) Magnus Auvinen. See licence.txt in the root of the distribution for more information. */
 /* If you are missing that file, acquire a complete release at teeworlds.com.                */
 #include "hash.h"
-#include "hash_ctxt.h"
 
+#include "hash_ctxt.h"
 #include "system.h"
 
 static void digest_str(const unsigned char *digest, size_t digest_len, char *str, size_t max_len)

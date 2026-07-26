@@ -1,6 +1,6 @@
 /* (c) Magnus Auvinen. See licence.txt in the root of the distribution for more information. */
 /* If you are missing that file, acquire a complete release at teeworlds.com.                */
-#include <stdio.h>	// sscanf
+#include "linereader.h"
 
 #include <base/system.h>
 
@@ -9,8 +9,7 @@
 #include <engine/storage.h>
 
 #include <mastersrv/mastersrv.h>
-
-#include "linereader.h"
+#include <stdio.h> // sscanf
 
 class CMasterServer : public IEngineMasterServer
 {
@@ -124,7 +123,7 @@ public:
 	{
 		mem_zero(m_aMasterServers, sizeof(m_aMasterServers));
 		for(int i = 0; i < MAX_MASTERSERVERS; i++)
-			str_format(m_aMasterServers[i].m_aHostname, sizeof(m_aMasterServers[i].m_aHostname), "master%d.teeworlds.com", i+1);
+			str_format(m_aMasterServers[i].m_aHostname, sizeof(m_aMasterServers[i].m_aHostname), "master%d.teeworlds.com", i + 1);
 	}
 
 	virtual int Load()

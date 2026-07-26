@@ -3,9 +3,9 @@
 #ifndef ENGINE_SHARED_MAPCHECKER_H
 #define ENGINE_SHARED_MAPCHECKER_H
 
-#include <engine/mapchecker.h>
-
 #include "memheap.h"
+
+#include <engine/mapchecker.h>
 
 class CMapChecker : public IMapChecker
 {

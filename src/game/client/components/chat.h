@@ -4,7 +4,9 @@
 #define GAME_CLIENT_COMPONENTS_CHAT_H
 #include <base/system.h>
 #include <base/tl/array.h>
+
 #include <engine/shared/ringbuffer.h>
+
 #include <game/client/component.h>
 #include <game/client/lineinput.h>
 #include <game/commands.h>
@@ -74,7 +76,7 @@ class CChat : public CComponent
 		char m_aText[1];
 	};
 	CHistoryEntry *m_pHistoryEntry;
-	TStaticRingBuffer<CHistoryEntry, 64*1024, CRingBufferBase::FLAG_RECYCLE> m_History;
+	TStaticRingBuffer<CHistoryEntry, 64 * 1024, CRingBufferBase::FLAG_RECYCLE> m_History;
 	int m_PendingChatCounter;
 	int64 m_LastChatSend;
 	int64 m_aLastSoundPlayed[CHAT_NUM];

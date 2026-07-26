@@ -2,10 +2,10 @@
 /* If you are missing that file, acquire a complete release at teeworlds.com.                */
 #include "test.h"
 
-#include <gtest/gtest.h>
-
 #include <engine/shared/datafile.h>
 #include <engine/storage.h>
+
+#include <gtest/gtest.h>
 
 TEST(Datafile, RoundtripItemDataAndSize)
 {

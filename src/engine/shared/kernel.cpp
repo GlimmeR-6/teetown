@@ -1,13 +1,14 @@
 /* (c) Magnus Auvinen. See licence.txt in the root of the distribution for more information. */
 /* If you are missing that file, acquire a complete release at teeworlds.com.                */
 #include <base/system.h>
+
 #include <engine/kernel.h>
 
 class CKernel : public IKernel
 {
 	enum
 	{
-		MAX_INTERFACES=32,
+		MAX_INTERFACES = 32,
 	};
 
 	class CInterfaceInfo
@@ -37,12 +38,10 @@ class CKernel : public IKernel
 	}
 
 public:
-
 	CKernel()
 	{
 		m_NumInterfaces = 0;
 	}
-
 
 	virtual bool RegisterInterfaceImpl(const char *pName, IInterface *pInterface)
 	{

@@ -1,8 +1,10 @@
 #include "test.h"
-#include <gtest/gtest.h>
 
 #include <base/system.h>
+
 #include <engine/message.h>
+
+#include <gtest/gtest.h>
 
 // pExpected is NULL if an error is expected
 static void ExpectAddString5(const char *pString, int Limit, const char *pExpected)
@@ -56,7 +58,9 @@ TEST(Packer, AddStringBroken)
 	ExpectAddString5("\x80", 0, "�");
 	ExpectAddString5("\x80\x80", 0, 0);
 	ExpectAddString5("a\x80", 0, "a�");
-	ExpectAddString5("\x80""a", 0, "�a");
+	ExpectAddString5("\x80"
+			 "a",
+		0, "�a");
 	ExpectAddString5("\x80", 1, "");
 	ExpectAddString5("\x80\x80", 3, "�");
 	ExpectAddString5("\x80\x80", 5, "�");

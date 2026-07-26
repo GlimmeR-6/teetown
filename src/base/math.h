@@ -93,6 +93,7 @@ inline int gcd(int a, int b)
 class fxp
 {
 	int value;
+
 public:
 	void set(int v)
 	{

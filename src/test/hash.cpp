@@ -1,9 +1,9 @@
 /* (c) Magnus Auvinen. See licence.txt in the root of the distribution for more information. */
 /* If you are missing that file, acquire a complete release at teeworlds.com.                */
-#include <gtest/gtest.h>
-
 #include <base/hash_ctxt.h>
 #include <base/system.h>
+
+#include <gtest/gtest.h>
 
 static void Expect(SHA256_DIGEST Actual, const char *pWanted)
 {

@@ -14,7 +14,7 @@ class CJsonWriter
 		STATE_ARRAY,
 		STATE_ATTRIBUTE,
 
-		MAX_DEPTH=16,
+		MAX_DEPTH = 16,
 	};
 
 	class CState
@@ -27,7 +27,7 @@ class CJsonWriter
 		{
 			m_Kind = Kind;
 			m_Empty = true;
-		};
+		}
 	};
 
 	IOHANDLE m_IO;

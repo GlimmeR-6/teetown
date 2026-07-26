@@ -3,9 +3,12 @@
 #ifndef GAME_CLIENT_RENDER_H
 #define GAME_CLIENT_RENDER_H
 
-#include <engine/graphics.h>
 #include <base/vmath.h>
+
+#include <engine/graphics.h>
+
 #include <generated/protocol.h>
+
 #include <game/mapitems.h>
 
 // sprite renderings
@@ -26,10 +29,10 @@ public:
 	CTeeRenderInfo()
 	{
 		for(int i = 0; i < NUM_SKINPARTS; i++)
-			m_aColors[i] = vec4(1,1,1,1);
+			m_aColors[i] = vec4(1, 1, 1, 1);
 		m_Size = 1.0f;
 		m_GotAirJump = 1;
-	};
+	}
 
 	IGraphics::CTextureHandle m_aTextures[NUM_SKINPARTS];
 	IGraphics::CTextureHandle m_HatTexture;

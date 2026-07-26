@@ -3,6 +3,7 @@
 #ifndef GAME_CLIENT_COMPONENTS_CONSOLE_H
 #define GAME_CLIENT_COMPONENTS_CONSOLE_H
 #include <engine/shared/ringbuffer.h>
+
 #include <game/client/component.h>
 #include <game/client/lineinput.h>
 
@@ -17,8 +18,8 @@ class CGameConsole : public CComponent
 			bool m_Highlighted;
 			char m_aText[1];
 		};
-		TStaticRingBuffer<CBacklogEntry, 64*1024, CRingBufferBase::FLAG_RECYCLE> m_Backlog;
-		TStaticRingBuffer<char, 64*1024, CRingBufferBase::FLAG_RECYCLE> m_History;
+		TStaticRingBuffer<CBacklogEntry, 64 * 1024, CRingBufferBase::FLAG_RECYCLE> m_Backlog;
+		TStaticRingBuffer<char, 64 * 1024, CRingBufferBase::FLAG_RECYCLE> m_History;
 		char *m_pHistoryEntry;
 
 		CLineInputBuffered<256> m_Input;
@@ -46,7 +47,11 @@ class CGameConsole : public CComponent
 
 		void ClearBacklog();
 		void ClearHistory();
-		void Reset() { m_CompletionRenderOffset = 0.0f; m_CompletionRenderOffsetChange = 0.0f; }
+		void Reset()
+		{
+			m_CompletionRenderOffset = 0.0f;
+			m_CompletionRenderOffsetChange = 0.0f;
+		}
 
 		void ExecuteLine(const char *pLine);
 
@@ -92,7 +97,7 @@ class CGameConsole : public CComponent
 public:
 	enum
 	{
-		CONSOLETYPE_LOCAL=0,
+		CONSOLETYPE_LOCAL = 0,
 		CONSOLETYPE_REMOTE,
 	};
 

@@ -1,9 +1,11 @@
 /* (c) Magnus Auvinen. See licence.txt in the root of the distribution for more information. */
 /* If you are missing that file, acquire a complete release at teeworlds.com.                */
+#include "spectator.h"
+
 #include <engine/demo.h>
 #include <engine/graphics.h>
-#include <engine/textrender.h>
 #include <engine/shared/config.h>
+#include <engine/textrender.h>
 
 #include <generated/client_data.h>
 #include <generated/protocol.h>
@@ -12,12 +14,9 @@
 #include <game/client/localization.h>
 #include <game/client/render.h>
 
-#include "spectator.h"
-
 bool CSpectator::CanSpectate()
 {
-	return m_pClient->m_Snap.m_SpecInfo.m_Active
-		&& (Client()->State() != IClient::STATE_DEMOPLAYBACK || DemoPlayer()->GetDemoType() == IDemoPlayer::DEMOTYPE_SERVER);
+	return m_pClient->m_Snap.m_SpecInfo.m_Active && (Client()->State() != IClient::STATE_DEMOPLAYBACK || DemoPlayer()->GetDemoType() == IDemoPlayer::DEMOTYPE_SERVER);
 }
 
 void CSpectator::ConKeySpectator(IConsole::IResult *pResult, void *pUserData)
@@ -43,18 +42,14 @@ bool CSpectator::SpecModePossible(int SpecMode, int SpectatorID)
 		{
 			return false;
 		}
-		if(m_pClient->m_LocalClientID != -1
-			&& m_pClient->m_aClients[m_pClient->m_LocalClientID].m_Team != TEAM_SPECTATORS
-			&& (SpectatorID == m_pClient->m_LocalClientID
-				|| m_pClient->m_aClients[m_pClient->m_LocalClientID].m_Team != m_pClient->m_aClients[SpectatorID].m_Team
-				|| (m_pClient->m_Snap.m_apPlayerInfos[SpectatorID] && (m_pClient->m_Snap.m_apPlayerInfos[SpectatorID]->m_PlayerFlags&PLAYERFLAG_DEAD))))
+		if(m_pClient->m_LocalClientID != -1 && m_pClient->m_aClients[m_pClient->m_LocalClientID].m_Team != TEAM_SPECTATORS && (SpectatorID == m_pClient->m_LocalClientID || m_pClient->m_aClients[m_pClient->m_LocalClientID].m_Team != m_pClient->m_aClients[SpectatorID].m_Team || (m_pClient->m_Snap.m_apPlayerInfos[SpectatorID] && (m_pClient->m_Snap.m_apPlayerInfos[SpectatorID]->m_PlayerFlags & PLAYERFLAG_DEAD))))
 		{
 			return false;
 		}
 		return true;
 	case SPEC_FLAGRED:
 	case SPEC_FLAGBLUE:
-		return m_pClient->m_GameInfo.m_GameFlags&GAMEFLAG_FLAGS;
+		return m_pClient->m_GameInfo.m_GameFlags & GAMEFLAG_FLAGS;
 	case SPEC_FREEVIEW:
 		return m_pClient->m_LocalClientID == -1 || m_pClient->m_aClients[m_pClient->m_LocalClientID].m_Team == TEAM_SPECTATORS;
 	default:
@@ -239,7 +234,7 @@ void CSpectator::OnRender()
 
 	// draw flag selection
 	float x = Margin, y = -270.0f;
-	if(m_pClient->m_GameInfo.m_GameFlags&GAMEFLAG_FLAGS)
+	if(m_pClient->m_GameInfo.m_GameFlags & GAMEFLAG_FLAGS)
 	{
 		for(int Flag = SPEC_FLAGRED; Flag <= SPEC_FLAGBLUE; ++Flag)
 		{
@@ -304,9 +299,7 @@ void CSpectator::OnRender()
 
 		// carried flag
 		float PosX = PlayerRect.x + PlayerRect.h / 2.0f;
-		if(m_pClient->m_GameInfo.m_GameFlags&GAMEFLAG_FLAGS
-			&& m_pClient->m_Snap.m_pGameDataFlag
-			&& (m_pClient->m_Snap.m_pGameDataFlag->m_FlagCarrierRed == i || m_pClient->m_Snap.m_pGameDataFlag->m_FlagCarrierBlue == i))
+		if(m_pClient->m_GameInfo.m_GameFlags & GAMEFLAG_FLAGS && m_pClient->m_Snap.m_pGameDataFlag && (m_pClient->m_Snap.m_pGameDataFlag->m_FlagCarrierRed == i || m_pClient->m_Snap.m_pGameDataFlag->m_FlagCarrierBlue == i))
 		{
 			Graphics()->BlendNormal();
 			Graphics()->TextureSet(g_pData->m_aImages[IMAGE_GAME].m_Id);
@@ -355,8 +348,8 @@ void CSpectator::SendSpectate(int SpecMode, int SpectatorID)
 {
 	if(Client()->State() == IClient::STATE_DEMOPLAYBACK)
 	{
-		m_pClient->m_DemoSpecMode = clamp(SpecMode, 0, NUM_SPECMODES-1);
-		m_pClient->m_DemoSpecID = clamp(SpectatorID, -1, MAX_CLIENTS-1);
+		m_pClient->m_DemoSpecMode = clamp(SpecMode, 0, NUM_SPECMODES - 1);
+		m_pClient->m_DemoSpecID = clamp(SpectatorID, -1, MAX_CLIENTS - 1);
 		return;
 	}
 

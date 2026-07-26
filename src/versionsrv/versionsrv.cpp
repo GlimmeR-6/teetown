@@ -1,19 +1,19 @@
 /* (c) Magnus Auvinen. See licence.txt in the root of the distribution for more information. */
 /* If you are missing that file, acquire a complete release at teeworlds.com.                */
-#include <base/system.h>
+#include "versionsrv.h"
+
+#include "mapversions.h"
+
 #include <base/math.h>
+#include <base/system.h>
 
 #include <engine/config.h>
 #include <engine/console.h>
 #include <engine/kernel.h>
+#include <engine/shared/network.h>
 #include <engine/storage.h>
 
-#include <engine/shared/network.h>
-
 #include <game/version.h>
-
-#include "versionsrv.h"
-#include "mapversions.h"
 
 enum
 {
@@ -48,10 +48,10 @@ static bool GetMapversionPackets(unsigned ClientVersion, CMapversionPacketData *
 {
 	switch(ClientVersion & 0xFFFFFF00u) // ignore minor version
 	{
-		case 0x0700: // 0.7.x
-			*pPacketData = s_aMapversionPackets07;
-			*pNumPackets = &s_NumMapversionPackets07;
-			return true;
+	case 0x0700: // 0.7.x
+		*pPacketData = s_aMapversionPackets07;
+		*pNumPackets = &s_NumMapversionPackets07;
+		return true;
 	}
 	*pPacketData = 0x0;
 	*pNumPackets = 0x0;
@@ -171,15 +171,12 @@ int main(int argc, const char **argv)
 		TOKEN ResponseToken;
 		while(s_NetClient.Recv(&Packet, &ResponseToken))
 		{
-			if(Packet.m_DataSize == sizeof(VERSIONSRV_GETVERSION)
-				&& mem_comp(Packet.m_pData, VERSIONSRV_GETVERSION, sizeof(VERSIONSRV_GETVERSION)) == 0)
+			if(Packet.m_DataSize == sizeof(VERSIONSRV_GETVERSION) && mem_comp(Packet.m_pData, VERSIONSRV_GETVERSION, sizeof(VERSIONSRV_GETVERSION)) == 0)
 			{
 				SendVersion(&Packet.m_Address, ResponseToken);
 			}
 
-			if((Packet.m_DataSize == sizeof(VERSIONSRV_GETMAPLIST)
-					|| Packet.m_DataSize == sizeof(VERSIONSRV_GETMAPLIST) + sizeof(unsigned))
-				&& mem_comp(Packet.m_pData, VERSIONSRV_GETMAPLIST, sizeof(VERSIONSRV_GETMAPLIST)) == 0)
+			if((Packet.m_DataSize == sizeof(VERSIONSRV_GETMAPLIST) || Packet.m_DataSize == sizeof(VERSIONSRV_GETMAPLIST) + sizeof(unsigned)) && mem_comp(Packet.m_pData, VERSIONSRV_GETMAPLIST, sizeof(VERSIONSRV_GETMAPLIST)) == 0)
 			{
 				unsigned ClientVersion = 0x0700;
 				if(Packet.m_DataSize == sizeof(VERSIONSRV_GETMAPLIST) + sizeof(unsigned))

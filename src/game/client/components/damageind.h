@@ -3,6 +3,7 @@
 #ifndef GAME_CLIENT_COMPONENTS_DAMAGEIND_H
 #define GAME_CLIENT_COMPONENTS_DAMAGEIND_H
 #include <base/vmath.h>
+
 #include <game/client/component.h>
 
 class CDamageInd : public CComponent
@@ -17,7 +18,7 @@ class CDamageInd : public CComponent
 
 	enum
 	{
-		MAX_ITEMS=64,
+		MAX_ITEMS = 64,
 	};
 
 	CItem m_aItems[MAX_ITEMS];

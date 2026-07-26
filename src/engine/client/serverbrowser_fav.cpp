@@ -1,23 +1,21 @@
 /* (c) Magnus Auvinen. See licence.txt in the root of the distribution for more information. */
 /* If you are missing that file, acquire a complete release at teeworlds.com.                */
+#include "serverbrowser_fav.h"
+
 #include <base/math.h>
 #include <base/system.h>
 
+#include <engine/config.h>
+#include <engine/console.h>
+#include <engine/contacts.h>
+#include <engine/engine.h>
+#include <engine/masterserver.h>
 #include <engine/shared/config.h>
 #include <engine/shared/memheap.h>
 #include <engine/shared/network.h>
 #include <engine/shared/packer.h>
 
-#include <engine/config.h>
-#include <engine/console.h>
-#include <engine/engine.h>
-#include <engine/contacts.h>
-#include <engine/masterserver.h>
-
 #include <mastersrv/mastersrv.h>
-
-#include "serverbrowser_fav.h"
-
 
 CServerBrowserFavorites::CServerBrowserFavorites()
 {
@@ -134,7 +132,7 @@ CServerBrowserFavorites::CFavoriteServer *CServerBrowserFavorites::FindFavoriteB
 
 void CServerBrowserFavorites::RemoveFavoriteEntry(int Index)
 {
-	mem_move(&m_aFavoriteServers[Index], &m_aFavoriteServers[Index+1], sizeof(CFavoriteServer)*(m_NumFavoriteServers-(Index+1)));
+	mem_move(&m_aFavoriteServers[Index], &m_aFavoriteServers[Index + 1], sizeof(CFavoriteServer) * (m_NumFavoriteServers - (Index + 1)));
 	m_NumFavoriteServers--;
 }
 

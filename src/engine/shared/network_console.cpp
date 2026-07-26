@@ -1,12 +1,11 @@
 /* (c) Magnus Auvinen. See licence.txt in the root of the distribution for more information. */
 /* If you are missing that file, acquire a complete release at teeworlds.com.                */
-#include <base/system.h>
-
-#include <engine/console.h>
-
 #include "netban.h"
 #include "network.h"
 
+#include <base/system.h>
+
+#include <engine/console.h>
 
 bool CNetConsole::Open(NETADDR BindAddr, CNetBan *pNetBan, NETFUNC_NEWCLIENT pfnNewClient, NETFUNC_DELCLIENT pfnDelClient, void *pUser)
 {
@@ -56,7 +55,7 @@ void CNetConsole::Drop(int ClientID, const char *pReason)
 
 int CNetConsole::AcceptClient(NETSOCKET Socket, const NETADDR *pAddr)
 {
-	char aError[256] = { 0 };
+	char aError[256] = {0};
 	int FreeSlot = -1;
 
 	// look for free slot or multiple client

@@ -3,9 +3,9 @@
 #ifndef ENGINE_MAPCHECKER_H
 #define ENGINE_MAPCHECKER_H
 
-#include <base/hash.h>
-
 #include "kernel.h"
+
+#include <base/hash.h>
 
 class IMapChecker : public IInterface
 {

@@ -1,15 +1,14 @@
 /* (c) Magnus Auvinen. See licence.txt in the root of the distribution for more information. */
 /* If you are missing that file, acquire a complete release at teeworlds.com.                */
 
+#include "localization.h"
+
 #include <base/system.h>
 #include <base/tl/algorithm.h>
 
 #include <engine/console.h>
-#include <engine/storage.h>
-
 #include <engine/shared/jsonparser.h>
-
-#include "localization.h"
+#include <engine/storage.h>
 
 const char *Localize(const char *pStr, const char *pContext)
 {
@@ -85,9 +84,11 @@ bool CLocalizationDatabase::Load(const char *pFilename, IStorage *pStorage, ICon
 			const char *pTr = (const char *)rStart[i]["tr"];
 			while(pOr[0] && pTr[0])
 			{
-				for(; pOr[0] && pOr[0] != '%'; ++pOr);
-				for(; pTr[0] && pTr[0] != '%'; ++pTr);
-				if(pOr[0] && pTr[0] && ((pOr[1] == ' ' && pTr[1] == 0) || (pOr[1] == 0 && pTr[1] == ' ')))	// skip  false positive
+				for(; pOr[0] && pOr[0] != '%'; ++pOr)
+					;
+				for(; pTr[0] && pTr[0] != '%'; ++pTr)
+					;
+				if(pOr[0] && pTr[0] && ((pOr[1] == ' ' && pTr[1] == 0) || (pOr[1] == 0 && pTr[1] == ' '))) // skip  false positive
 					break;
 				if((pOr[0] && (!pTr[0] || pOr[1] != pTr[1])) || (pTr[0] && (!pOr[0] || pTr[1] != pOr[1])))
 				{
@@ -130,8 +131,8 @@ const char *CLocalizationDatabase::FindString(unsigned Hash, unsigned ContextHas
 		else if(rStr.m_ContextHash == DefaultHash)
 			DefaultIndex = i;
 	}
-	
-    return r.index(DefaultIndex).m_pReplacement;
+
+	return r.index(DefaultIndex).m_pReplacement;
 }
 
 CLocalizationDatabase g_Localization;

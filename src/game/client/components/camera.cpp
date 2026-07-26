@@ -1,14 +1,16 @@
 /* (c) Magnus Auvinen. See licence.txt in the root of the distribution for more information. */
 /* If you are missing that file, acquire a complete release at teeworlds.com.                */
-#include <engine/shared/config.h>
+#include "camera.h"
+
+#include "controls.h"
 
 #include <base/math.h>
-#include <game/collision.h>
-#include <game/client/gameclient.h>
-#include <game/client/component.h>
 
-#include "camera.h"
-#include "controls.h"
+#include <engine/shared/config.h>
+
+#include <game/client/component.h>
+#include <game/client/gameclient.h>
+#include <game/collision.h>
 
 CCamera::CCamera()
 {
@@ -42,7 +44,7 @@ void CCamera::OnRender()
 
 		// update camera center
 		if(m_pClient->m_Snap.m_SpecInfo.m_Active && !m_pClient->m_Snap.m_SpecInfo.m_UsePosition &&
-			(m_pClient->m_Snap.m_SpecInfo.m_SpecMode == SPEC_FREEVIEW || (m_pClient->m_Snap.m_pLocalInfo && !(m_pClient->m_Snap.m_pLocalInfo->m_PlayerFlags&PLAYERFLAG_DEAD))))
+			(m_pClient->m_Snap.m_SpecInfo.m_SpecMode == SPEC_FREEVIEW || (m_pClient->m_Snap.m_pLocalInfo && !(m_pClient->m_Snap.m_pLocalInfo->m_PlayerFlags & PLAYERFLAG_DEAD))))
 		{
 			if(m_CamType != CAMTYPE_SPEC)
 			{
@@ -88,17 +90,17 @@ void CCamera::OnRender()
 			if(Config()->m_ClDynamicCamera && l > 0.0001f) // make sure that this isn't 0
 			{
 				float DeadZone = Config()->m_ClMouseDeadzone;
-				float FollowFactor = Config()->m_ClMouseFollowfactor/100.0f;
-				float OffsetAmount = maximum(l-DeadZone, 0.0f) * FollowFactor;
+				float FollowFactor = Config()->m_ClMouseFollowfactor / 100.0f;
+				float OffsetAmount = maximum(l - DeadZone, 0.0f) * FollowFactor;
 
-				TargetCameraOffset = normalize(m_pClient->m_pControls->m_MousePos)*OffsetAmount;
+				TargetCameraOffset = normalize(m_pClient->m_pControls->m_MousePos) * OffsetAmount;
 			}
-			
+
 			if(Config()->m_ClCameraSmoothness > 0)
 				s_CurrentCameraOffset += (TargetCameraOffset - s_CurrentCameraOffset) * minimum(DeltaTime * s_SpeedBias, 1.0f);
 			else
 				s_CurrentCameraOffset = TargetCameraOffset;
-			
+
 			if(m_pClient->m_Snap.m_SpecInfo.m_Active)
 				m_Center = m_pClient->m_Snap.m_SpecInfo.m_Position + s_CurrentCameraOffset;
 			else
@@ -110,10 +112,10 @@ void CCamera::OnRender()
 		m_Zoom = 0.7f;
 		static vec2 s_Dir = vec2(1.0f, 0.0f);
 
-		if(distance(m_Center, m_RotationCenter) <= (float)Config()->m_ClRotationRadius+0.5f)
+		if(distance(m_Center, m_RotationCenter) <= (float)Config()->m_ClRotationRadius + 0.5f)
 		{
 			// do little rotation
-			float RotPerTick = 360.0f/(float)Config()->m_ClRotationSpeed * Client()->RenderFrameTime();
+			float RotPerTick = 360.0f / (float)Config()->m_ClRotationSpeed * Client()->RenderFrameTime();
 			s_Dir = rotate(s_Dir, RotPerTick);
 			m_Center = m_RotationCenter + s_Dir * (float)Config()->m_ClRotationRadius;
 		}
@@ -125,7 +127,7 @@ void CCamera::OnRender()
 			float Distance = distance(m_AnimationStartPos, TargetPos);
 
 			// move time
-			m_MoveTime += Client()->RenderFrameTime()*Config()->m_ClCameraSpeed / 10.0f;
+			m_MoveTime += Client()->RenderFrameTime() * Config()->m_ClCameraSpeed / 10.0f;
 			float XVal = 1 - m_MoveTime;
 			XVal = pow(XVal, 7.0f);
 
@@ -141,7 +143,7 @@ void CCamera::ChangePosition(int PositionNumber)
 	if(m_pClient->Client()->State() == IClient::STATE_ONLINE)
 		return; //Do not change Main Menu Camera Positions while we are changing settings in-game
 
-	if(PositionNumber < 0 || PositionNumber > NUM_POS-1)
+	if(PositionNumber < 0 || PositionNumber > NUM_POS - 1)
 		return;
 
 	m_AnimationStartPos = m_Center;
@@ -153,8 +155,8 @@ void CCamera::ChangePosition(int PositionNumber)
 void CCamera::ConSetPosition(IConsole::IResult *pResult, void *pUserData)
 {
 	CCamera *pSelf = (CCamera *)pUserData;
-	int PositionNumber = clamp(pResult->GetInteger(0), 0, NUM_POS-1);
-	vec2 Position = vec2(pResult->GetInteger(1)*32.0f+16.0f, pResult->GetInteger(2)*32.0f+16.0f);
+	int PositionNumber = clamp(pResult->GetInteger(0), 0, NUM_POS - 1);
+	vec2 Position = vec2(pResult->GetInteger(1) * 32.0f + 16.0f, pResult->GetInteger(2) * 32.0f + 16.0f);
 	pSelf->m_Positions[PositionNumber] = Position;
 
 	// update
