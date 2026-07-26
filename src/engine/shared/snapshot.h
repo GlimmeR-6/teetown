@@ -150,4 +150,4 @@ public:
 };
 
 
-#endif // ENGINE_SNAPSHOT_H
+#endif // ENGINE_SHARED_SNAPSHOT_H

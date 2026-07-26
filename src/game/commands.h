@@ -171,4 +171,4 @@ public:
     }
 };
 
-#endif //GAME_COMMANDS_H
+#endif // GAME_COMMANDS_H

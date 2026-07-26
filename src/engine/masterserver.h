@@ -36,7 +36,4 @@ public:
 
 extern IEngineMasterServer *CreateEngineMasterServer();
 
-#endif
-
-
-
+#endif // ENGINE_MASTERSERVER_H

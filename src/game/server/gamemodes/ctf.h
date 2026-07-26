@@ -28,5 +28,4 @@ public:
 	virtual void Tick();
 };
 
-#endif
-
+#endif // GAME_SERVER_GAMEMODES_CTF_H

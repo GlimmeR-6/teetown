@@ -105,4 +105,4 @@ public:
 
 extern IConsole *CreateConsole(int FlagMask);
 
-#endif // FILE_ENGINE_CONSOLE_H
+#endif // ENGINE_CONSOLE_H
