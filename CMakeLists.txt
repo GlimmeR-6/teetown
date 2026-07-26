@@ -91,9 +91,10 @@ option(MACOS_CODESIGN "Whether to sign code when building the DMG on macOS" OFF)
 
 if(TARGET_OS STREQUAL "mac" AND MACOS_CODESIGN STREQUAL ON)
   if(DEFINED ENV{MACOS_APP_IDENTITY})
+    message(STATUS "Using MACOS_APP_IDENTITY as codesign signature")
     set(MACOS_APP_IDENTITY "$ENV{MACOS_APP_IDENTITY}")
   else()
-    message(WARNING "MACOS_APP_IDENTITY environment variable not set. Using ad-hoc signature")
+    message(WARNING "MACOS_APP_IDENTITY environment variable not defined. Using ad-hoc signature")
     set(MACOS_APP_IDENTITY "-") # ad-hoc signature
   endif()
 endif()
