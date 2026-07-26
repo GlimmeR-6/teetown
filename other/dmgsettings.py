@@ -40,7 +40,7 @@ def icon_from_app(app_path):
 # .. Basics ....................................................................
 
 # Uncomment to override the output filename
-# filename = 'TeeTown.dmg''
+# filename = 'TeeTown.dmg'
 
 # Uncomment to override the output volume name
 # volume_name = 'TeeTown'
@@ -57,7 +57,7 @@ size = defines.get('size', None)
 # Files to include
 files = [ application_client ]
 if server_enabled:
-	files += application_server
+	files.append(application_server)
 
 # Symlinks to create
 symlinks = { 'Applications': '/Applications' }
@@ -68,7 +68,7 @@ symlinks = { 'Applications': '/Applications' }
 # Files to hide the extension of
 hide_extension = [ appname_client ]
 if server_enabled:
-	hide_extension += appname_server
+	hide_extension.append(appname_server)
 
 # Volume icon
 #
