@@ -1,6 +1,11 @@
 name: Build
 
-on: [push, pull_request]
+on: 
+  push:
+    branches-ignore:
+      - gh-readonly-queue/**
+  pull_request:
+  merge_group:
 
 jobs:
   build-cmake:
