@@ -91,7 +91,7 @@ class CTextCursor
 	bool m_SkipTextRender;
 	float m_NextLineAdvanceY;
 	array<CScaledGlyph> m_Glyphs;
-	int64 m_StringVersion;
+	int64_t m_StringVersion;
 
 	CTextBoundingBox AlignedBoundingBox() const
 	{
@@ -135,7 +135,7 @@ public:
 	float m_LineSpacing;
 	bool m_StartOfLine;
 
-	void Reset(int64 StringVersion = -1)
+	void Reset(int64_t StringVersion = -1)
 	{
 		if(StringVersion < 0 || m_StringVersion != StringVersion)
 		{

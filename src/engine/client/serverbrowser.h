@@ -107,8 +107,8 @@ private:
 	int m_CurrentLanToken;
 
 	int m_RefreshFlags;
-	int64 m_BroadcastTime;
-	int64 m_MasterRefreshTime;
+	int64_t m_BroadcastTime;
+	int64_t m_MasterRefreshTime;
 
 	CServerEntry *Add(int ServerlistType, const NETADDR &Addr);
 	CServerEntry *Find(int ServerlistType, const NETADDR &Addr);

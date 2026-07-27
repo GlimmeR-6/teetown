@@ -27,7 +27,7 @@ struct CCheckServer
 	NETADDR m_Address;
 	NETADDR m_AltAddress;
 	int m_TryCount;
-	int64 m_TryTime;
+	int64_t m_TryTime;
 	TOKEN m_Token;
 };
 
@@ -38,7 +38,7 @@ struct CServerEntry
 {
 	enum ServerType m_Type;
 	NETADDR m_Address;
-	int64 m_Expire;
+	int64_t m_Expire;
 };
 
 static CServerEntry m_aServers[MAX_SERVERS];
@@ -219,8 +219,8 @@ void AddServer(NETADDR *pInfo, ServerType Type)
 
 void UpdateServers()
 {
-	int64 Now = time_get();
-	int64 Freq = time_freq();
+	int64_t Now = time_get();
+	int64_t Freq = time_freq();
 	for(int i = 0; i < m_NumCheckServers; i++)
 	{
 		if(Now > m_aCheckServers[i].m_TryTime + Freq)
@@ -254,7 +254,7 @@ void UpdateServers()
 
 void PurgeServers()
 {
-	int64 Now = time_get();
+	int64_t Now = time_get();
 	int i = 0;
 	while(i < m_NumServers)
 	{
@@ -341,7 +341,7 @@ int main(int argc, const char **argv)
 
 	dbg_msg("mastersrv", "started");
 
-	int64 LastBuild = 0, LastBanReload = 0;
+	int64_t LastBuild = 0, LastBanReload = 0;
 	ServerType Type = SERVERTYPE_INVALID;
 	while(1)
 	{

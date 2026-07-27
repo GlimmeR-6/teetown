@@ -82,11 +82,11 @@ TOKEN CNetTokenManager::GenerateToken(const NETADDR *pAddr) const
 	return GenerateToken(pAddr, m_Seed);
 }
 
-TOKEN CNetTokenManager::GenerateToken(const NETADDR *pAddr, int64 Seed)
+TOKEN CNetTokenManager::GenerateToken(const NETADDR *pAddr, int64_t Seed)
 {
 	static const NETADDR NullAddr = {0};
 	NETADDR Addr;
-	char aBuf[sizeof(NETADDR) + sizeof(int64)];
+	char aBuf[sizeof(NETADDR) + sizeof(int64_t)];
 	unsigned int Result;
 
 	if(pAddr->type & NETTYPE_LINK_BROADCAST)
@@ -97,7 +97,7 @@ TOKEN CNetTokenManager::GenerateToken(const NETADDR *pAddr, int64 Seed)
 	Addr.type = pAddr->type;
 
 	mem_copy(aBuf, &Addr, sizeof(NETADDR));
-	mem_copy(aBuf + sizeof(NETADDR), &Seed, sizeof(int64));
+	mem_copy(aBuf + sizeof(NETADDR), &Seed, sizeof(int64_t));
 
 	Result = Hash(aBuf, sizeof(aBuf)) & NET_TOKEN_MASK;
 	if(Result == NET_TOKEN_NONE)
@@ -179,7 +179,7 @@ void CNetTokenCache::SendPacketConnless(const NETADDR *pAddr, const void *pData,
 		mem_copy((*ppInfo)->m_aData, pData, DataSize);
 		(*ppInfo)->m_Addr = *pAddr;
 		(*ppInfo)->m_DataSize = DataSize;
-		int64 Now = time_get();
+		int64_t Now = time_get();
 		(*ppInfo)->m_Expiry = Now + time_freq() * NET_TOKENCACHE_PACKETEXPIRY;
 		(*ppInfo)->m_LastTokenRequest = Now;
 		(*ppInfo)->m_pNext = 0;
@@ -296,7 +296,7 @@ void CNetTokenCache::AddToken(const NETADDR *pAddr, TOKEN Token, int TokenFLag)
 
 void CNetTokenCache::Update()
 {
-	int64 Now = time_get();
+	int64_t Now = time_get();
 
 	// drop expired address info
 	CAddressInfo *pAddrInfo;

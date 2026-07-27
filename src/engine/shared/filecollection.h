@@ -15,7 +15,7 @@ class CFileCollection
 		TIMESTAMP_LENGTH = 20, // _YYYY-MM-DD_HH-MM-SS
 	};
 
-	int64 m_aTimestamps[MAX_ENTRIES];
+	int64_t m_aTimestamps[MAX_ENTRIES];
 	int m_NumTimestamps;
 	int m_MaxEntries;
 	char m_aFileDesc[128];
@@ -26,12 +26,12 @@ class CFileCollection
 	IStorage *m_pStorage;
 
 	bool IsFilenameValid(const char *pFilename);
-	int64 ExtractTimestamp(const char *pTimestring);
-	void BuildTimestring(int64 Timestamp, char *pTimestring);
+	int64_t ExtractTimestamp(const char *pTimestring);
+	void BuildTimestring(int64_t Timestamp, char *pTimestring);
 
 public:
 	void Init(IStorage *pStorage, const char *pPath, const char *pFileDesc, const char *pFileExt, int MaxEntries);
-	void AddEntry(int64 Timestamp);
+	void AddEntry(int64_t Timestamp);
 
 	static int FilelistCallback(const char *pFilename, int IsDir, int StorageType, void *pUser);
 };

@@ -101,8 +101,8 @@ void CRegister::Init(CNetServer *pNetServer, IEngineMasterServer *pMasterServer,
 
 void CRegister::RegisterUpdate(int Nettype)
 {
-	int64 Now = time_get();
-	int64 Freq = time_freq();
+	int64_t Now = time_get();
+	int64_t Freq = time_freq();
 
 	if(!m_pConfig->m_SvRegister)
 		return;

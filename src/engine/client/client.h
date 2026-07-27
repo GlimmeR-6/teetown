@@ -47,9 +47,9 @@ public:
 
 class CSmoothTime
 {
-	int64 m_Snap;
-	int64 m_Current;
-	int64 m_Target;
+	int64_t m_Snap;
+	int64_t m_Current;
+	int64_t m_Target;
 
 	CGraph m_Graph;
 
@@ -58,14 +58,14 @@ class CSmoothTime
 
 	float m_aAdjustSpeed[2]; // 0 = down, 1 = up
 public:
-	void Init(int64 Target);
+	void Init(int64_t Target);
 	void SetAdjustSpeed(int Direction, float Value);
 
-	int64 Get(int64 Now);
+	int64_t Get(int64_t Now);
 	inline int GetStabilityScore() const { return m_BadnessScore; }
 
-	void UpdateInt(int64 Target);
-	void Update(CGraph *pGraph, int64 Target, int TimeLeft, int AdjustDirection);
+	void UpdateInt(int64_t Target);
+	void Update(CGraph *pGraph, int64_t Target, int TimeLeft, int AdjustDirection);
 };
 
 class CClient : public IClient, public CDemoPlayer::IListener
@@ -104,10 +104,10 @@ class CClient : public IClient, public CDemoPlayer::IListener
 	char m_aServerPassword[128];
 
 	unsigned m_SnapshotParts;
-	int64 m_LocalStartTime;
+	int64_t m_LocalStartTime;
 
-	int64 m_LastRenderTime;
-	int64 m_LastCpuTime;
+	int64_t m_LastRenderTime;
+	int64_t m_LastCpuTime;
 	float m_LastAvgCpuFrameTime;
 	float m_RenderFrameTimeLow;
 	float m_RenderFrameTimeHigh;
@@ -131,7 +131,7 @@ class CClient : public IClient, public CDemoPlayer::IListener
 	char m_aVersionStr[10];
 
 	// pinging
-	int64 m_PingStartTime;
+	int64_t m_PingStartTime;
 
 	//
 	char m_aCurrentMap[256];
@@ -165,8 +165,8 @@ class CClient : public IClient, public CDemoPlayer::IListener
 	{
 		int m_aData[MAX_INPUT_SIZE]; // the input data
 		int m_Tick; // the tick that the input is for
-		int64 m_PredictedTime; // prediction latency when we sent this input
-		int64 m_Time;
+		int64_t m_PredictedTime; // prediction latency when we sent this input
+		int64_t m_Time;
 	} m_aInputs[200];
 
 	int m_CurrentInput;
@@ -207,7 +207,7 @@ class CClient : public IClient, public CDemoPlayer::IListener
 		class CHostLookup m_VersionServeraddr;
 	} m_VersionInfo;
 
-	int64 TickStartTime(int Tick);
+	int64_t TickStartTime(int Tick);
 
 public:
 	IEngine *Engine() { return m_pEngine; }

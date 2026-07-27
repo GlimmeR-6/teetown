@@ -62,7 +62,7 @@ void CSnapIDPool::RemoveFirstTimeout()
 
 int CSnapIDPool::NewID()
 {
-	int64 Now = time_get();
+	int64_t Now = time_get();
 
 	// process timed ids
 	while(m_FirstTimed != -1 && m_aIDs[m_FirstTimed].m_Timeout < Now)
@@ -312,7 +312,7 @@ void CServer::Kick(int ClientID, const char *pReason)
 	m_NetServer.Drop(ClientID, pReason);
 }
 
-int64 CServer::TickStartTime(int Tick)
+int64_t CServer::TickStartTime(int Tick)
 {
 	return m_GameStartTime + (time_freq() * Tick) / SERVER_TICK_SPEED;
 }
@@ -889,8 +889,8 @@ void CServer::ProcessClientPacket(CNetChunk *pPacket)
 		else if(Unpacker.Type() == NETMSG_INPUT)
 		{
 			CClient::CInput *pInput;
-			int64 TagTime;
-			int64 Now = time_get();
+			int64_t TagTime;
+			int64_t Now = time_get();
 
 			m_aClients[ClientID].m_LastAckedSnapshot = Unpacker.GetInt();
 			int IntendedTick = Unpacker.GetInt();
@@ -1358,7 +1358,7 @@ int CServer::Run()
 				}
 			}
 
-			int64 Now = time_get();
+			int64_t Now = time_get();
 			bool NewTicks = false;
 			bool ShouldSnap = false;
 			while(Now > TickStartTime(m_CurrentGameTick + 1))

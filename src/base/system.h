@@ -12,6 +12,8 @@
 
 #include <time.h>
 
+#include <cstdint>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -628,14 +630,6 @@ void sphore_signal(SEMAPHORE *sem);
 void sphore_destroy(SEMAPHORE *sem);
 
 /* Group: Timer */
-#ifdef __GNUC__
-/* if compiled with -pedantic-errors it will complain about long
-	not being a C90 thing.
-*/
-__extension__ typedef long long int64;
-#else
-typedef long long int64;
-#endif
 /*
 	Function: time_get
 		Fetches a sample from a high resolution timer.
@@ -646,7 +640,7 @@ typedef long long int64;
 	Remarks:
 		To know how fast the timer is ticking, see <time_freq>.
 */
-int64 time_get();
+int64_t time_get();
 
 /*
 	Function: time_freq
@@ -655,7 +649,7 @@ int64 time_get();
 	Returns:
 		Returns the frequency of the high resolution timer.
 */
-int64 time_freq();
+int64_t time_freq();
 
 /*
 	Function: time_timestamp

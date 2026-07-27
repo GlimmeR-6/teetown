@@ -165,7 +165,7 @@ public:
 	IEngineMap *m_pMap;
 	IMapChecker *m_pMapChecker;
 
-	int64 m_GameStartTime;
+	int64_t m_GameStartTime;
 	bool m_RunServer;
 	bool m_MapReload;
 	int m_RconClientID;
@@ -215,7 +215,7 @@ public:
 	void DemoRecorder_HandleAutoStart();
 	bool DemoRecorder_IsRecording();
 
-	int64 TickStartTime(int Tick);
+	int64_t TickStartTime(int Tick);
 
 	int Init();
 
