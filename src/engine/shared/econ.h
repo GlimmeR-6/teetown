@@ -5,6 +5,8 @@
 
 #include "network.h"
 
+#include <engine/console.h>
+
 class CEcon
 {
 	enum

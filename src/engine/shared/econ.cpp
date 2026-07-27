@@ -4,7 +4,6 @@
 
 #include "netban.h"
 
-#include <engine/console.h>
 #include <engine/shared/config.h>
 
 int CEcon::NewClientCallback(int ClientID, void *pUser)

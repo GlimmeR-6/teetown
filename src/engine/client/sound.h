@@ -3,7 +3,10 @@
 #ifndef ENGINE_CLIENT_SOUND_H
 #define ENGINE_CLIENT_SOUND_H
 
+#include <engine/graphics.h>
+#include <engine/shared/config.h>
 #include <engine/sound.h>
+#include <engine/storage.h>
 
 class CSound : public IEngineSound
 {

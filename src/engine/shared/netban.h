@@ -5,6 +5,8 @@
 
 #include <base/system.h>
 
+#include <engine/console.h>
+
 inline int NetComp(const NETADDR *pAddr1, const NETADDR *pAddr2)
 {
 	return net_addr_comp(pAddr1, pAddr2, false);

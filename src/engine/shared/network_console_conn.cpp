@@ -2,8 +2,6 @@
 /* If you are missing that file, acquire a complete release at teeworlds.com.                */
 #include "network.h"
 
-#include <base/system.h>
-
 void CConsoleNetConnection::Reset()
 {
 	m_State = NET_CONNSTATE_OFFLINE;

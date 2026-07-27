@@ -6,6 +6,8 @@
 #include "huffman.h"
 #include "snapshot.h"
 
+#include <base/hash.h>
+
 #include <engine/demo.h>
 #include <engine/shared/protocol.h>
 

@@ -5,8 +5,6 @@
 
 #include <base/math.h>
 
-#include <engine/storage.h>
-
 bool CFileCollection::IsFilenameValid(const char *pFilename)
 {
 	if(str_length(pFilename) != m_FileDescLength + TIMESTAMP_LENGTH + m_FileExtLength ||

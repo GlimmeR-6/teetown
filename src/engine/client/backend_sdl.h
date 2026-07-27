@@ -3,7 +3,11 @@
 #ifndef ENGINE_CLIENT_BACKEND_SDL_H
 #define ENGINE_CLIENT_BACKEND_SDL_H
 
+#include "SDL.h"
+#include "SDL_opengl.h"
 #include "graphics_threaded.h"
+
+#include <base/tl/threading.h>
 
 #if defined(CONF_PLATFORM_MACOS)
 #include <objc/objc-runtime.h>

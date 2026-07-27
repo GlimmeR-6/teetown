@@ -4,6 +4,14 @@
 #define GAME_SERVER_PLAYER_H
 
 #include "alloc.h"
+#include "entities/character.h"
+#include "gamecontext.h"
+
+#include <base/vmath.h>
+
+#include <engine/shared/protocol.h>
+
+#include <generated/protocol.h>
 
 enum
 {

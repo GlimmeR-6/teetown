@@ -3,10 +3,23 @@
 #ifndef ENGINE_SERVER_SERVER_H
 #define ENGINE_SERVER_SERVER_H
 
+#include "register.h"
+
+#include <base/hash.h>
+#include <base/system.h>
 #include <base/tl/sorted_array.h>
 
+#include <engine/console.h>
+#include <engine/map.h>
 #include <engine/server.h>
+#include <engine/shared/demo.h>
+#include <engine/shared/econ.h>
+#include <engine/shared/mapchecker.h>
 #include <engine/shared/memheap.h>
+#include <engine/shared/netban.h>
+#include <engine/shared/network.h>
+#include <engine/shared/protocol.h>
+#include <engine/shared/snapshot.h>
 
 class CSnapIDPool
 {

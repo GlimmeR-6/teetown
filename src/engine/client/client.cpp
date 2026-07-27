@@ -3,37 +3,20 @@
 #include "client.h"
 
 #include "SDL.h"
-#include "contacts.h"
-#include "serverbrowser.h"
 
 #include <base/math.h>
-#include <base/system.h>
 
-#include <engine/client.h>
-#include <engine/config.h>
 #include <engine/console.h>
-#include <engine/editor.h>
-#include <engine/engine.h>
-#include <engine/graphics.h>
-#include <engine/input.h>
 #include <engine/keys.h>
-#include <engine/map.h>
-#include <engine/masterserver.h>
 #include <engine/serverbrowser.h>
 #include <engine/shared/compression.h>
-#include <engine/shared/config.h>
 #include <engine/shared/datafile.h>
-#include <engine/shared/demo.h>
 #include <engine/shared/filecollection.h>
-#include <engine/shared/mapchecker.h>
-#include <engine/shared/network.h>
 #include <engine/shared/packer.h>
 #include <engine/shared/protocol.h>
 #include <engine/shared/ringbuffer.h>
 #include <engine/shared/snapshot.h>
-#include <engine/sound.h>
 #include <engine/storage.h>
-#include <engine/textrender.h>
 
 #include <game/version.h>
 

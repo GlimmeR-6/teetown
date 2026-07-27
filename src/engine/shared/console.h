@@ -5,6 +5,8 @@
 
 #include "memheap.h"
 
+#include <base/math.h>
+
 #include <engine/console.h>
 
 #include <new>

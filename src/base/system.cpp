@@ -35,6 +35,7 @@
 #include <direct.h>
 #include <errno.h>
 #include <fcntl.h>
+#include <objbase.h> // required for shellapi.h
 #include <process.h>
 #include <share.h>
 #include <shellapi.h>
@@ -423,28 +424,28 @@ unsigned io_read(IOHANDLE io, void *buffer, unsigned size)
 void io_read_all(IOHANDLE io, void **result, unsigned *result_len)
 {
 	unsigned len = (unsigned)io_length(io);
-	char *buffer = mem_alloc(len + 1);
+	char *buffer = (char *)mem_alloc(len + 1);
 	unsigned read = io_read(io, buffer, len + 1); // +1 to check if the file size is larger than expected
 	if(read < len)
 	{
-		buffer = realloc(buffer, read + 1);
+		buffer = (char *)realloc(buffer, read + 1);
 		len = read;
 	}
 	else if(read > len)
 	{
 		unsigned cap = 2 * read;
 		len = read;
-		buffer = realloc(buffer, cap);
+		buffer = (char *)realloc(buffer, cap);
 		while((read = io_read(io, buffer + len, cap - len)) != 0)
 		{
 			len += read;
 			if(len == cap)
 			{
 				cap *= 2;
-				buffer = realloc(buffer, cap);
+				buffer = (char *)realloc(buffer, cap);
 			}
 		}
-		buffer = realloc(buffer, len + 1);
+		buffer = (char *)realloc(buffer, len + 1);
 	}
 	buffer[len] = 0;
 	*result = buffer;
@@ -461,7 +462,7 @@ char *io_read_all_str(IOHANDLE io)
 		mem_free(buffer);
 		return 0x0;
 	}
-	return buffer;
+	return (char *)buffer;
 }
 
 unsigned io_unread_byte(IOHANDLE io, unsigned char byte)
@@ -612,7 +613,7 @@ static void aio_handle_free_and_unlock(ASYNCIO *aio)
 
 static void aio_thread(void *user)
 {
-	ASYNCIO *aio = user;
+	ASYNCIO *aio = (ASYNCIO *)user;
 
 	lock_wait(aio->lock);
 	while(1)
@@ -672,7 +673,7 @@ static void aio_thread(void *user)
 
 ASYNCIO *aio_new(IOHANDLE io)
 {
-	ASYNCIO *aio = malloc(sizeof(*aio));
+	ASYNCIO *aio = new ASYNCIO;
 	if(!aio)
 	{
 		return 0;
@@ -682,12 +683,12 @@ ASYNCIO *aio_new(IOHANDLE io)
 	sphore_init(&aio->sphore);
 	aio->thread = 0;
 
-	aio->buffer = malloc(ASYNC_BUFSIZE);
+	aio->buffer = (unsigned char *)malloc(ASYNC_BUFSIZE);
 	if(!aio->buffer)
 	{
 		sphore_destroy(&aio->sphore);
 		lock_destroy(aio->lock);
-		free(aio);
+		delete aio;
 		return 0;
 	}
 	aio->buffer_size = ASYNC_BUFSIZE;
@@ -703,7 +704,7 @@ ASYNCIO *aio_new(IOHANDLE io)
 		free(aio->buffer);
 		sphore_destroy(&aio->sphore);
 		lock_destroy(aio->lock);
-		free(aio);
+		delete aio;
 		return 0;
 	}
 	return aio;
@@ -766,7 +767,7 @@ void aio_write_unlocked(ASYNCIO *aio, const void *buffer, unsigned size)
 		unsigned int new_written = buffer_len(aio) + size + 1;
 		unsigned int next_size = next_buffer_size(aio->buffer_size, new_written);
 		unsigned int next_len = 0;
-		unsigned char *next_buffer = malloc(next_size);
+		unsigned char *next_buffer = (unsigned char *)malloc(next_size);
 
 		struct BUFFERS buffers;
 		buffer_ptrs(aio, &buffers);
@@ -871,7 +872,7 @@ static unsigned long __stdcall thread_run(void *user)
 #error not implemented
 #endif
 {
-	struct THREAD_RUN *data = user;
+	struct THREAD_RUN *data = (THREAD_RUN *)user;
 	void (*threadfunc)(void *) = data->threadfunc;
 	void *u = data->u;
 	free(data);
@@ -881,7 +882,7 @@ static unsigned long __stdcall thread_run(void *user)
 
 void *thread_init(void (*threadfunc)(void *), void *u)
 {
-	struct THREAD_RUN *data = malloc(sizeof(*data));
+	struct THREAD_RUN *data = (THREAD_RUN *)malloc(sizeof(*data));
 	data->threadfunc = threadfunc;
 	data->u = u;
 #if defined(CONF_FAMILY_UNIX)
@@ -1053,7 +1054,7 @@ typedef struct SEMINTERNAL
 
 void sphore_init(SEMAPHORE *sem)
 {
-	*sem = mem_alloc(sizeof(**sem));
+	*sem = (SEMAPHORE)mem_alloc(sizeof(**sem));
 
 	(*sem)->count = 0;
 	(*sem)->waiters = 0;
@@ -2974,7 +2975,7 @@ int mem_comp(const void *a, const void *b, int size)
 
 int mem_has_null(const void *block, unsigned size)
 {
-	const unsigned char *bytes = block;
+	const unsigned char *bytes = (const unsigned char *)block;
 	unsigned i;
 	for(i = 0; i < size; i++)
 	{
@@ -3340,7 +3341,7 @@ void secure_random_fill(void *bytes, unsigned length)
 		dbg_break();
 	}
 #if defined(CONF_FAMILY_WINDOWS)
-	if(!CryptGenRandom(secure_random_data.provider, length, bytes))
+	if(!CryptGenRandom(secure_random_data.provider, length, (unsigned char *)bytes))
 	{
 		dbg_msg("secure", "CryptGenRandom failed, last_error=%lu", GetLastError());
 		dbg_break();

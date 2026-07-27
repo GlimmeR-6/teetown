@@ -3,8 +3,6 @@
 #include "netban.h"
 #include "network.h"
 
-#include <base/system.h>
-
 #include <engine/console.h>
 
 bool CNetConsole::Open(NETADDR BindAddr, CNetBan *pNetBan, NETFUNC_NEWCLIENT pfnNewClient, NETFUNC_DELCLIENT pfnDelClient, void *pUser)

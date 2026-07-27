@@ -5,7 +5,6 @@
 
 #include <base/hash_ctxt.h>
 #include <base/math.h>
-#include <base/system.h>
 
 static unsigned int Hash(char *pData, int Size)
 {

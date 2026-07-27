@@ -3,6 +3,10 @@
 #ifndef ENGINE_SHARED_FILECOLLECTION_H
 #define ENGINE_SHARED_FILECOLLECTION_H
 
+#include <base/system.h>
+
+#include <engine/storage.h>
+
 class CFileCollection
 {
 	enum

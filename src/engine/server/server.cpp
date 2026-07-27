@@ -3,29 +3,18 @@
 
 #include "server.h"
 
-#include "register.h"
-
 #include <base/math.h>
 #include <base/system.h>
 
 #include <engine/config.h>
-#include <engine/console.h>
 #include <engine/engine.h>
-#include <engine/map.h>
 #include <engine/masterserver.h>
 #include <engine/server.h>
 #include <engine/shared/compression.h>
 #include <engine/shared/config.h>
 #include <engine/shared/datafile.h>
-#include <engine/shared/demo.h>
-#include <engine/shared/econ.h>
 #include <engine/shared/filecollection.h>
-#include <engine/shared/mapchecker.h>
-#include <engine/shared/netban.h>
-#include <engine/shared/network.h>
 #include <engine/shared/packer.h>
-#include <engine/shared/protocol.h>
-#include <engine/shared/snapshot.h>
 #include <engine/storage.h>
 
 #include <mastersrv/mastersrv.h>

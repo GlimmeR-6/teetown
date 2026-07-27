@@ -5,6 +5,9 @@
 
 #include <base/tl/array.h>
 
+#include <engine/serverbrowser.h>
+#include <engine/shared/config.h>
+
 class CServerBrowserFilter
 {
 public:

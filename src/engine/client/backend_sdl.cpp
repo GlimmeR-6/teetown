@@ -2,8 +2,6 @@
 /* If you are missing that file, acquire a complete release at teeworlds.com.                */
 #include "backend_sdl.h"
 
-#include "SDL.h"
-#include "SDL_opengl.h"
 #include "graphics_threaded.h"
 
 #include <base/detect.h>

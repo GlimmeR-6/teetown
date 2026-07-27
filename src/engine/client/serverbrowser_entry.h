@@ -3,6 +3,10 @@
 #ifndef ENGINE_CLIENT_SERVERBROWSER_ENTRY_H
 #define ENGINE_CLIENT_SERVERBROWSER_ENTRY_H
 
+#include <base/system.h>
+
+#include <engine/serverbrowser.h>
+
 class CServerEntry
 {
 public:

@@ -2,8 +2,6 @@
 /* If you are missing that file, acquire a complete release at teeworlds.com.                */
 #include "jobs.h"
 
-#include <base/system.h>
-
 CJobPool::CJobPool()
 {
 	// empty the pool

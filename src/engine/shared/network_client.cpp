@@ -2,8 +2,6 @@
 /* If you are missing that file, acquire a complete release at teeworlds.com.                */
 #include "network.h"
 
-#include <base/system.h>
-
 bool CNetClient::Open(NETADDR BindAddr, CConfig *pConfig, IConsole *pConsole, IEngine *pEngine, int Flags)
 {
 	// open socket

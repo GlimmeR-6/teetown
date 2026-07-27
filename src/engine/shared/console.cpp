@@ -5,7 +5,6 @@
 #include "config.h"
 #include "linereader.h"
 
-#include <base/math.h>
 #include <base/system.h>
 
 #include <engine/shared/protocol.h>

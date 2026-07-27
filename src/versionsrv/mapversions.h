@@ -3,6 +3,8 @@
 #ifndef VERSIONSRV_MAPVERSIONS_H
 #define VERSIONSRV_MAPVERSIONS_H
 
+#include "versionsrv.h"
+
 // Map versions for 0.7.x
 static const CMapVersion s_aMapVersionList[] = {
 	/* 0.7.1, 0.7.2, 0.7.3 */

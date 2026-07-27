@@ -3,7 +3,26 @@
 #ifndef ENGINE_CLIENT_CLIENT_H
 #define ENGINE_CLIENT_CLIENT_H
 
+#include "contacts.h"
+#include "serverbrowser.h"
+
 #include <base/hash.h>
+#include <base/system.h>
+
+#include <engine/client.h>
+#include <engine/config.h>
+#include <engine/editor.h>
+#include <engine/engine.h>
+#include <engine/graphics.h>
+#include <engine/input.h>
+#include <engine/map.h>
+#include <engine/masterserver.h>
+#include <engine/shared/config.h>
+#include <engine/shared/demo.h>
+#include <engine/shared/mapchecker.h>
+#include <engine/shared/network.h>
+#include <engine/sound.h>
+#include <engine/textrender.h>
 
 class CGraph
 {

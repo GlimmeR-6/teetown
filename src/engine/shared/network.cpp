@@ -7,7 +7,6 @@
 #include "huffman.h"
 
 #include <base/math.h>
-#include <base/system.h>
 
 #include <engine/engine.h>
 

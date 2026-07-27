@@ -2,15 +2,9 @@
 /* If you are missing that file, acquire a complete release at teeworlds.com.                */
 #include "input.h"
 
-#include "SDL.h"
-
 #include <base/system.h>
 
-#include <engine/console.h>
-#include <engine/graphics.h>
-#include <engine/input.h>
 #include <engine/keys.h>
-#include <engine/shared/config.h>
 
 // this header is protected so you don't include it from anywere
 #define KEYS_INCLUDE
@@ -27,8 +21,9 @@
 
 #if defined(CONF_FAMILY_WINDOWS)
 #define WIN32_LEAN_AND_MEAN
-#include <imm.h>
 #include <windows.h>
+// windows.h must be included before imm.h, but clang-format requires includes to be sorted alphabetically, hence this comment.
+#include <imm.h>
 #endif
 
 // for platform specific features that aren't available or are broken in SDL

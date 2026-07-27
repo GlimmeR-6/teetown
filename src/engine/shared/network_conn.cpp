@@ -4,7 +4,6 @@
 #include "network.h"
 
 #include <base/math.h>
-#include <base/system.h>
 
 void CNetConnection::ResetStats()
 {

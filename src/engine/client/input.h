@@ -3,7 +3,14 @@
 #ifndef ENGINE_CLIENT_INPUT_H
 #define ENGINE_CLIENT_INPUT_H
 
+#include "SDL.h"
+
 #include <base/tl/sorted_array.h>
+
+#include <engine/console.h>
+#include <engine/graphics.h>
+#include <engine/input.h>
+#include <engine/shared/config.h>
 
 class CInput : public IEngineInput
 {

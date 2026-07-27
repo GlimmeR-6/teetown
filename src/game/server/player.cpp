@@ -3,9 +3,7 @@
 
 #include "player.h"
 
-#include "entities/character.h"
 #include "entities/flag.h"
-#include "gamecontext.h"
 #include "gamecontroller.h"
 
 MACRO_ALLOC_POOL_ID_IMPL(CPlayer, MAX_CLIENTS)

@@ -5,7 +5,6 @@
 #include <base/system.h>
 
 #include <engine/console.h>
-#include <engine/masterserver.h>
 #include <engine/shared/config.h>
 #include <engine/shared/network.h>
 
