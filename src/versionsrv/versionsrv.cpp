@@ -126,7 +126,7 @@ int main(int argc, const char **argv)
 
 	const int FlagMask = 0;
 	IKernel *pKernel = IKernel::Create();
-	IStorage *pStorage = CreateStorage("Teeworlds", IStorage::STORAGETYPE_BASIC, argc, argv);
+	IStorage *pStorage = CreateStorage("TeeTown", IStorage::STORAGETYPE_BASIC, argc, argv);
 	IConfigManager *pConfigManager = CreateConfigManager();
 	IConsole *pConsole = CreateConsole(FlagMask);
 

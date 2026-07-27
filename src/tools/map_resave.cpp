@@ -9,7 +9,7 @@ int main(int argc, const char **argv)
 {
 	cmdline_fix(&argc, &argv);
 
-	IStorage *pStorage = CreateStorage("Teeworlds", IStorage::STORAGETYPE_BASIC, argc, argv);
+	IStorage *pStorage = CreateStorage("TeeTown", IStorage::STORAGETYPE_BASIC, argc, argv);
 	if(!pStorage || argc != 3)
 		return -1;
 

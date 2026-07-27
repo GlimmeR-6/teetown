@@ -52,7 +52,7 @@ int main(int argc, const char **argv)
 	cmdline_fix(&argc, &argv);
 
 	IKernel *pKernel = IKernel::Create();
-	s_pStorage = CreateStorage("Teeworlds", IStorage::STORAGETYPE_BASIC, argc, argv);
+	s_pStorage = CreateStorage("TeeTown", IStorage::STORAGETYPE_BASIC, argc, argv);
 	s_pEngineMap = CreateEngineMap();
 
 	bool RegisterFail = !pKernel->RegisterInterface(s_pStorage);
