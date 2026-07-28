@@ -1,0 +1,31 @@
+[files]
+extend-exclude = [
+	"build-*/",
+	"build/",
+	"data/countryflags",
+	"data/languages",
+	"data/skins",
+	"teetown-libs",
+	"other/icons/*.icns",
+	"src/engine/external",
+
+	# tests with invalid words
+	"src/test/str_test.cpp",
+]
+
+[default]
+extend-ignore-re = [
+	'lod',
+	'LOD',
+	'Lod',
+	'PARM',
+	'PNGs',
+	'SEH',
+	'UPnP',
+	'Datas',
+	'datas',
+	'iy',
+	'0x510E527FUL',
+	'I\*\*nteger',
+	's\*\*tring',
+]
