@@ -11,7 +11,7 @@
 
 int CGlyphMap::CAtlas::TrySection(int Index, int Width, int Height)
 {
-	ivec3 Section = m_Sections[Index];
+	const ivec3 &Section = m_vSections[Index];
 	int CurX = Section.x;
 	int CurY = Section.y;
 
@@ -20,17 +20,18 @@ int CGlyphMap::CAtlas::TrySection(int Index, int Width, int Height)
 	if(CurX + Width > m_Width - 1)
 		return -1;
 
-	for(int i = Index; i < m_Sections.size(); ++i)
+	for(int i = Index; i < (int)m_vSections.size(); ++i)
 	{
 		if(FitWidth <= 0)
 			break;
 
-		Section = m_Sections[i];
-		if(Section.y > CurY)
-			CurY = Section.y;
+		const ivec3 &CurrentSection = m_vSections[i];
+
+		if(CurrentSection.y > CurY)
+			CurY = CurrentSection.y;
 		if(CurY + Height > m_Height - 1)
 			return -1;
-		FitWidth -= Section.l;
+		FitWidth -= CurrentSection.l;
 	}
 
 	return CurY;
@@ -44,13 +45,13 @@ void CGlyphMap::CAtlas::Init(int Index, int X, int Y, int Width, int Height)
 	m_Height = Height;
 
 	m_ID = Index;
-	m_Sections.clear();
+	m_vSections.clear();
 
 	ivec3 Section;
 	Section.x = 1;
 	Section.y = 1;
 	Section.l = m_Width - 2;
-	m_Sections.add(Section);
+	m_vSections.push_back(Section);
 
 	m_IsEmpty = true;
 }
@@ -64,12 +65,12 @@ ivec2 CGlyphMap::CAtlas::Add(int Width, int Height)
 
 	ivec2 Position;
 
-	for(int i = 0; i < m_Sections.size(); ++i)
+	for(int i = 0; i < (int)m_vSections.size(); ++i)
 	{
 		int y = TrySection(i, Width, Height);
 		if(y >= 0)
 		{
-			ivec3 Section = m_Sections[i];
+			const ivec3 &Section = m_vSections[i];
 			int NewHeight = y + Height;
 			if((NewHeight < BestHeight) || ((NewHeight == BestHeight) && (Section.l > 0 && Section.l < BestWidth)))
 			{
@@ -93,34 +94,34 @@ ivec2 CGlyphMap::CAtlas::Add(int Width, int Height)
 	NewSection.x = Position.x;
 	NewSection.y = Position.y + Height;
 	NewSection.l = Width;
-	m_Sections.insert(NewSection, m_Sections.all().slice(BestSectionIndex, BestSectionIndex + 1));
+	m_vSections.insert(m_vSections.begin() + BestSectionIndex, NewSection);
 
-	for(int i = BestSectionIndex + 1; i < m_Sections.size(); ++i)
+	for(int i = BestSectionIndex + 1; i < (int)m_vSections.size(); ++i)
 	{
-		ivec3 *Section = &m_Sections[i];
-		ivec3 *Previous = &m_Sections[i - 1];
+		ivec3 &Section = m_vSections[i];
+		ivec3 &Previous = m_vSections[i - 1];
 
-		if(Section->x >= Previous->x + Previous->l)
+		if(Section.x >= Previous.x + Previous.l)
 			break;
 
-		int Shrink = Previous->x + Previous->l - Section->x;
-		Section->x += Shrink;
-		Section->l -= Shrink;
-		if(Section->l > 0)
+		int Shrink = Previous.x + Previous.l - Section.x;
+		Section.x += Shrink;
+		Section.l -= Shrink;
+		if(Section.l > 0)
 			break;
 
-		m_Sections.remove_index(i);
+		m_vSections.erase(m_vSections.begin() + i);
 		i -= 1;
 	}
 
-	for(int i = 0; i < m_Sections.size() - 1; ++i)
+	for(int i = 0; i < (int)m_vSections.size() - 1; ++i)
 	{
-		ivec3 *Section = &m_Sections[i];
-		ivec3 *Next = &m_Sections[i + 1];
-		if(Section->y == Next->y)
+		ivec3 &Section = m_vSections[i];
+		ivec3 &Next = m_vSections[i + 1];
+		if(Section.y == Next.y)
 		{
-			Section->l += Next->l;
-			m_Sections.remove_index(i + 1);
+			Section.l += Next.l;
+			m_vSections.erase(m_vSections.begin() + i + 1);
 			i -= 1;
 		}
 	}
