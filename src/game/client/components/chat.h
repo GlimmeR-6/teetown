@@ -11,6 +11,8 @@
 #include <game/client/lineinput.h>
 #include <game/commands.h>
 
+#include <vector>
+
 class CChat : public CComponent
 {
 	enum
@@ -86,7 +88,7 @@ class CChat : public CComponent
 	int m_SelectedCommand;
 	int m_CommandStart;
 
-	array<bool> m_aFilter;
+	std::vector<bool> m_vFilter;
 	int m_FilteredCount;
 	int FilterChatCommands(const char *pLine);
 	int GetFirstActiveCommand();
