@@ -179,7 +179,7 @@ public:
 	bool RunCommand(const CCommandBuffer::CCommand *pBaseCommand);
 };
 
-// command processor impelementation, uses the fragments to combine into one processor
+// command processor implementation, uses the fragments to combine into one processor
 class CCommandProcessor_SDL_OpenGL : public CGraphicsBackend_Threaded::ICommandProcessor
 {
 	CCommandProcessorFragment_OpenGL m_OpenGL;

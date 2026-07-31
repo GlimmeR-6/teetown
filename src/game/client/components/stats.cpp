@@ -221,7 +221,7 @@ void CStats::OnRender()
 				if(!(Config()->m_ClStatboardInfos & TC_STATS_SPREE))
 					w += 140; // Best spree is a long column name, add a bit more
 				else
-					w += 40; // The combined colunms are a bit long, add some extra
+					w += 40; // The combined columns are a bit long, add some extra
 				continue;
 			}
 			else if((1 << i) == (TC_STATS_FLAGGRABS) && !(m_pClient->m_GameInfo.m_GameFlags & GAMEFLAG_FLAGS))

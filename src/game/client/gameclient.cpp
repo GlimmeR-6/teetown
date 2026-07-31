@@ -255,7 +255,7 @@ void CGameClient::OnConsoleInit()
 	m_pMapLayersForeGround = &::gs_MapLayersForeGround;
 	m_pStats = &::gs_Stats;
 
-	// make a list of all the systems, make sure to add them in the corrent render order
+	// make a list of all the systems, make sure to add them in the current render order
 	m_All.Add(m_pSkins);
 	m_All.Add(m_pCountryFlags);
 	m_All.Add(m_pMapimages);
@@ -296,7 +296,7 @@ void CGameClient::OnConsoleInit()
 	m_Input.Add(&m_pMenus->m_Binder); // this will take over all input when we want to bind a key
 	m_Input.Add(&m_pBinds->m_SpecialBinds);
 	m_Input.Add(m_pGameConsole);
-	m_Input.Add(m_pChat); // chat has higher prio due to tha you can quit it by pressing esc
+	m_Input.Add(m_pChat); // chat has higher prio due to that you can quit it by pressing esc
 	m_Input.Add(m_pMotd); // for pressing esc to remove it
 	m_Input.Add(m_pMenus);
 	m_Input.Add(&gs_Spectator);
@@ -462,7 +462,7 @@ void CGameClient::OnConnected()
 
 	m_ServerMode = SERVERMODE_PURE;
 
-	// send the inital info
+	// send the initial info
 	SendStartInfo();
 }
 

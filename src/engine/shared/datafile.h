@@ -74,7 +74,7 @@ class CDataFileWriter
 	{
 		MAX_ITEM_TYPES = 0xffff,
 		MAX_ITEMS = 1024,
-		MAX_DATAS = 1024,
+		MAX_DATA = 1024,
 	};
 
 	IOHANDLE m_File;

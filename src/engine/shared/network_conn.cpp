@@ -402,7 +402,7 @@ int CNetConnection::Update()
 		}
 	}
 
-	// send keep alives if nothing has happend for 250ms
+	// send keep alives if nothing has happened for 250ms
 	if(State() == NET_CONNSTATE_ONLINE)
 	{
 		if(Now - m_LastSendTime > time_freq() / 2) // flush connection after 500ms if needed

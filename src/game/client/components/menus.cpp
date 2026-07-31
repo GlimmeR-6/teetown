@@ -831,7 +831,7 @@ int CMenus::MenuImageScan(const char *pName, int IsDir, int DirType, void *pUser
 	int OrgWeight = 0;
 	int NewWeight = 192;
 
-	// find most common frequence
+	// find most common frequency
 	for(int y = 0; y < Info.m_Height; y++)
 		for(int x = 0; x < Info.m_Width; x++)
 		{
@@ -1680,7 +1680,7 @@ void CMenus::OnStateChange(int NewState, int OldState)
 
 	if(NewState == IClient::STATE_OFFLINE)
 	{
-		if(OldState >= IClient::STATE_ONLINE && NewState < IClient::STATE_QUITING)
+		if(OldState >= IClient::STATE_ONLINE && NewState < IClient::STATE_QUITTING)
 			UpdateMusicState();
 
 		m_Popup = POPUP_NONE;

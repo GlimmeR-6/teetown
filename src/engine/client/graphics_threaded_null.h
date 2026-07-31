@@ -93,7 +93,7 @@ public:
 
 	virtual int GetVideoModes(CVideoMode *pModes, int MaxModes, int Screen) { return 0; }
 
-	// syncronization
+	// synchronization
 	virtual void InsertSignal(semaphore *pSemaphore) {}
 	virtual bool IsIdle() const { return false; }
 	virtual void WaitForIdle() {}

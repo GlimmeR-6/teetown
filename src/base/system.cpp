@@ -2626,7 +2626,7 @@ char *str_sanitize_filename(char *aName)
 	char *str = (char *)aName;
 	while(*str)
 	{
-		// replace forbidden characters with a whispace
+		// replace forbidden characters with a whitespace
 		if(*str == '/' || *str == '<' || *str == '>' || *str == ':' || *str == '"' || *str == '\\' || *str == '|' || *str == '?' || *str == '*')
 			*str = ' ';
 		str++;

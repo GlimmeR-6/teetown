@@ -994,7 +994,7 @@ bool CGraphics_Threaded::SetVSync(bool State)
 	return RetOk;
 }
 
-// syncronization
+// synchronization
 void CGraphics_Threaded::InsertSignal(semaphore *pSemaphore)
 {
 	CCommandBuffer::CSignalCommand Cmd;
