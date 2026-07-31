@@ -34,7 +34,7 @@ public:
 	virtual ~IAutoMapper() {}
 	virtual void Load(const json_value &rElement) = 0;
 	virtual void Proceed(class CLayerTiles *pLayer, int ConfigID, RECTi Area) {}
-	virtual void Proceed(class CLayerTiles *pLayer, int ConfigID, int Ammount) {} // for convenience purposes
+	virtual void Proceed(class CLayerTiles *pLayer, int ConfigID, int Amount) {} // for convenience purposes
 
 	virtual int RuleSetNum() = 0;
 	virtual const char *GetRuleSetName(int Index) const = 0;

@@ -51,7 +51,7 @@ CUI::CUI()
 	m_pHotItem = 0;
 	m_pActiveItem = 0;
 	m_pLastActiveItem = 0;
-	m_pBecommingHotItem = 0;
+	m_pBecomingHotItem = 0;
 
 	m_MouseX = 0;
 	m_MouseY = 0;
@@ -105,10 +105,10 @@ void CUI::Update(float MouseX, float MouseY, float MouseWorldX, float MouseWorld
 	m_MouseWorldY = MouseWorldY;
 	m_LastMouseButtons = m_MouseButtons;
 	m_MouseButtons = MouseButtons;
-	m_pHotItem = m_pBecommingHotItem;
+	m_pHotItem = m_pBecomingHotItem;
 	if(m_pActiveItem)
 		m_pHotItem = m_pActiveItem;
-	m_pBecommingHotItem = 0;
+	m_pBecomingHotItem = 0;
 
 	if(Enabled())
 	{

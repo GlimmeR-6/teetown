@@ -76,7 +76,7 @@ public:
 	/* Constants: Texture Loading Flags
 		TEXLOAD_NORESAMPLE - Prevents the texture from any resampling
 		TEXLOAD_NOMIPMAPS - Prevents the texture from generating mipmaps
-		TEXLOAD_ARRAY_256 - Texture will be loaded as 3D texture with 16*16 subtiles
+		TEXLOAD_ARRAY_256 - Texture will be loaded as 3D texture with 16*16 sub tiles
 		TEXLOAD_MULTI_DIMENSION - Texture will be loaded as 2D and 3D texture
 	*/
 	enum
@@ -204,7 +204,7 @@ public:
 	virtual void Swap() = 0;
 	virtual int GetNumScreens() const = 0;
 
-	// syncronization
+	// synchronization
 	virtual void InsertSignal(class semaphore *pSemaphore) = 0;
 	virtual bool IsIdle() const = 0;
 	virtual void WaitForIdle() = 0;

@@ -88,7 +88,7 @@ void CMenus::RenderGame(CUIRect MainView)
 		MainView.HSplitTop(20.0f, &ButtonRow, 0);
 		ButtonRow.VMargin(Spacing, &ButtonRow);
 
-		// specator button
+		// spectator button
 		int Team = m_pClient->m_aClients[m_pClient->m_LocalClientID].m_Team;
 		if(!Info.m_AllowSpec && Team != TEAM_SPECTATORS)
 		{

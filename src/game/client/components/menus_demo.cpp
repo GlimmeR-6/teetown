@@ -128,7 +128,7 @@ void CMenus::RenderDemoPlayer(CUIRect MainView)
 				UI()->SetActiveItem(0);
 				if(!s_PausedBeforeSeeking)
 					DemoPlayer()->Unpause();
-				s_PrevAmount = -1.0f; // so that the same position can be seeked again after releasing the mouse
+				s_PrevAmount = -1.0f; // so that the same position can be sought again after releasing the mouse
 			}
 			else
 			{

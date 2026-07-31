@@ -63,7 +63,7 @@ public:
 
 	enum
 	{
-		// commadn groups
+		// command groups
 		CMDGROUP_CORE = 0, // commands that everyone has to implement
 		CMDGROUP_PLATFORM_OPENGL = 10000, // commands specific to a platform
 		CMDGROUP_PLATFORM_SDL = 20000,
@@ -74,7 +74,7 @@ public:
 		//
 		CMD_RUNBUFFER,
 
-		// syncronization
+		// synchronization
 		CMD_SIGNAL,
 
 		// texture commands
@@ -491,7 +491,7 @@ public:
 
 	virtual int GetVideoModes(CVideoMode *pModes, int MaxModes, int Screen);
 
-	// syncronization
+	// synchronization
 	virtual void InsertSignal(semaphore *pSemaphore);
 	virtual bool IsIdle() const;
 	virtual void WaitForIdle();

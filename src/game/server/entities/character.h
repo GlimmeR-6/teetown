@@ -26,7 +26,7 @@ public:
 	virtual void Reset();
 	virtual void Destroy();
 	virtual void Tick();
-	virtual void TickDefered();
+	virtual void TickDeferred();
 	virtual void TickPaused();
 	virtual void Snap(int SnappingClient);
 	virtual void PostSnap();

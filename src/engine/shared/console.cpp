@@ -712,7 +712,7 @@ void CConsole::Con_EvalIf(IResult *pResult, void *pUserData)
 	if(!str_comp(pResult->GetString(1), "!="))
 		Condition = !Condition;
 	else if(str_comp(pResult->GetString(1), "==") && pfnCallback == StrVariableCommand)
-		pConsole->Print(OUTPUT_LEVEL_STANDARD, "console", "Error: invalid comperator for type string");
+		pConsole->Print(OUTPUT_LEVEL_STANDARD, "console", "Error: invalid comparator for type string");
 	else if(!str_comp(pResult->GetString(1), ">"))
 		Condition = Result.m_Value > atoi(pResult->GetString(2));
 	else if(!str_comp(pResult->GetString(1), "<"))
@@ -722,7 +722,7 @@ void CConsole::Con_EvalIf(IResult *pResult, void *pUserData)
 	else if(!str_comp(pResult->GetString(1), ">="))
 		Condition = Result.m_Value >= atoi(pResult->GetString(2));
 	else if(str_comp(pResult->GetString(1), "=="))
-		pConsole->Print(OUTPUT_LEVEL_STANDARD, "console", "Error: invalid comperator for type integer");
+		pConsole->Print(OUTPUT_LEVEL_STANDARD, "console", "Error: invalid comparator for type integer");
 
 	if(pResult->NumArguments() > 4 && str_comp(pResult->GetString(4), "else"))
 		pConsole->Print(OUTPUT_LEVEL_STANDARD, "console", "Error: expected else");

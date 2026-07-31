@@ -428,7 +428,7 @@ const int *CClient::GetInput(int Tick) const
 // ------ state handling -----
 void CClient::SetState(int s)
 {
-	if(m_State == IClient::STATE_QUITING)
+	if(m_State == IClient::STATE_QUITTING)
 		return;
 
 	int Old = m_State;
@@ -745,7 +745,7 @@ void CClient::DebugRender()
 
 void CClient::Quit()
 {
-	SetState(IClient::STATE_QUITING);
+	SetState(IClient::STATE_QUITTING);
 }
 
 const char *CClient::ErrorString() const
@@ -1380,7 +1380,7 @@ void CClient::ProcessServerPacket(CNetChunk *pPacket)
 
 					int CompleteSize = (NumParts - 1) * MAX_SNAPSHOT_PACKSIZE + PartSize;
 
-					// reset snapshoting
+					// reset snapshotting
 					m_SnapshotParts = 0;
 
 					// find snapshot that we should use as delta
@@ -1535,7 +1535,7 @@ void CClient::PumpNetwork()
 	if(State() != IClient::STATE_DEMOPLAYBACK)
 	{
 		// check for errors
-		if(State() != IClient::STATE_OFFLINE && State() != IClient::STATE_QUITING && m_NetClient.State() == NETSTATE_OFFLINE)
+		if(State() != IClient::STATE_OFFLINE && State() != IClient::STATE_QUITTING && m_NetClient.State() == NETSTATE_OFFLINE)
 		{
 			SetState(IClient::STATE_OFFLINE);
 			DisconnectWithReason(m_NetClient.ErrorString());
@@ -2103,7 +2103,7 @@ void CClient::Run()
 		AutoScreenshot_Cleanup();
 
 		// check conditions
-		if(State() == IClient::STATE_QUITING)
+		if(State() == IClient::STATE_QUITTING)
 			break;
 
 		// beNice

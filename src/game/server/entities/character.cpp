@@ -539,7 +539,7 @@ void CCharacter::Tick()
 	HandleWeapons();
 }
 
-void CCharacter::TickDefered()
+void CCharacter::TickDeferred()
 {
 	static const vec2 ColBox(CCharacterCore::PHYS_SIZE, CCharacterCore::PHYS_SIZE);
 	// advance the dummy

@@ -227,7 +227,7 @@ public:
 
 		void UpdateRenderInfo(CGameClient *pGameClient, int ClientID, bool UpdateSkinInfo);
 		void UpdateBotRenderInfo(CGameClient *pGameClient, int ClientID);
-		void Reset(CGameClient *pGameClient, int CLientID);
+		void Reset(CGameClient *pGameClient, int ClientID);
 	};
 
 	CClientData m_aClients[MAX_CLIENTS];
