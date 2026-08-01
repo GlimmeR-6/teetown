@@ -4,7 +4,6 @@
 #define ENGINE_TEXTRENDER_H
 #include "kernel.h"
 
-#include <base/tl/array.h>
 #include <base/vmath.h>
 
 #include <engine/console.h>

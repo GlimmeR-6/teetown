@@ -3,7 +3,6 @@
 #ifndef GAME_CLIENT_COMPONENTS_CHAT_H
 #define GAME_CLIENT_COMPONENTS_CHAT_H
 #include <base/system.h>
-#include <base/tl/array.h>
 
 #include <engine/shared/ringbuffer.h>
 

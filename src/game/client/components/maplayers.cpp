@@ -6,8 +6,6 @@
 #include "mapimages.h"
 #include "menus.h"
 
-#include <base/tl/array.h>
-
 #include <engine/demo.h>
 #include <engine/graphics.h>
 #include <engine/keys.h>

@@ -4,7 +4,6 @@
 #include "editor.h"
 
 #include <base/color.h>
-#include <base/tl/array.h>
 
 #include <engine/client.h>
 #include <engine/console.h>

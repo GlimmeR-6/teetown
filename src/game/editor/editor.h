@@ -8,7 +8,6 @@
 #include <base/math.h>
 #include <base/system.h>
 #include <base/tl/algorithm.h>
-#include <base/tl/array.h>
 #include <base/tl/sorted_array.h>
 #include <base/tl/string.h>
 #include <base/vmath.h>
