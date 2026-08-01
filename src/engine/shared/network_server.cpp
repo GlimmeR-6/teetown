@@ -247,7 +247,7 @@ int CNetServer::Send(CNetChunk *pChunk, TOKEN Token)
 
 				if(net_addr_comp(&pChunk->m_Address, m_aSlots[i].m_Connection.PeerAddress(), true) == 0)
 				{
-					// upgrade the packet, now that we know its recipent
+					// upgrade the packet, now that we know its recipient
 					pChunk->m_ClientID = i;
 					break;
 				}
@@ -266,9 +266,9 @@ int CNetServer::Send(CNetChunk *pChunk, TOKEN Token)
 			}
 			else
 			{
-				dbg_assert(pChunk->m_ClientID >= 0, "errornous client id");
-				dbg_assert(pChunk->m_ClientID < NET_MAX_CLIENTS, "errornous client id");
-				dbg_assert(m_aSlots[pChunk->m_ClientID].m_Connection.State() != NET_CONNSTATE_OFFLINE, "errornous client id");
+				dbg_assert(pChunk->m_ClientID >= 0, "erroneous client id");
+				dbg_assert(pChunk->m_ClientID < NET_MAX_CLIENTS, "erroneous client id");
+				dbg_assert(m_aSlots[pChunk->m_ClientID].m_Connection.State() != NET_CONNSTATE_OFFLINE, "erroneous client id");
 
 				m_aSlots[pChunk->m_ClientID].m_Connection.SendPacketConnless((const char *)pChunk->m_pData, pChunk->m_DataSize);
 			}
@@ -283,9 +283,9 @@ int CNetServer::Send(CNetChunk *pChunk, TOKEN Token)
 		}
 
 		int Flags = 0;
-		dbg_assert(pChunk->m_ClientID >= 0, "errornous client id");
-		dbg_assert(pChunk->m_ClientID < NET_MAX_CLIENTS, "errornous client id");
-		dbg_assert(m_aSlots[pChunk->m_ClientID].m_Connection.State() != NET_CONNSTATE_OFFLINE, "errornous client id");
+		dbg_assert(pChunk->m_ClientID >= 0, "erroneous client id");
+		dbg_assert(pChunk->m_ClientID < NET_MAX_CLIENTS, "erroneous client id");
+		dbg_assert(m_aSlots[pChunk->m_ClientID].m_Connection.State() != NET_CONNSTATE_OFFLINE, "erroneous client id");
 
 		if(pChunk->m_Flags & NETSENDFLAG_VITAL)
 			Flags = NET_CHUNKFLAG_VITAL;

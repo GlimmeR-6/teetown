@@ -35,7 +35,7 @@ class BaseType:
 		self._target_name = "INVALID"
 		self._id = GetID() # this is used to remember what order the members have in structures etc
 
-	def Identifyer(self): return "x"+str(self._id)
+	def Identifier(self): return "x"+str(self._id)
 	def TargetName(self): return self._target_name
 	def TypeName(self): return self._type_name
 	def ID(self): return self._id;
@@ -112,21 +112,21 @@ class Array(BaseType):
 		lines = []
 		i = 0
 		for item in self.items:
-			lines += item.EmitPreDefinition("%s[%d]"%(self.Identifyer(), i))
+			lines += item.EmitPreDefinition("%s[%d]"%(self.Identifier(), i))
 			i += 1
 
 		if len(self.items):
-			lines += ["static %s %s[] = {"%(self.TypeName(), self.Identifyer())]
+			lines += ["static %s %s[] = {"%(self.TypeName(), self.Identifier())]
 			for item in self.items:
 				itemlines = item.EmitDefinition("")
 				lines += ["\t" + " ".join(itemlines).replace("\t", " ") + ","]
 			lines += ["};"]
 		else:
-			lines += ["static %s *%s = 0;"%(self.TypeName(), self.Identifyer())]
+			lines += ["static %s *%s = 0;"%(self.TypeName(), self.Identifier())]
 
 		return lines
 	def EmitDefinition(self, name):
-		return [str(len(self.items))+","+self.Identifyer()]
+		return [str(len(self.items))+","+self.Identifier()]
 
 # Basic Types
 

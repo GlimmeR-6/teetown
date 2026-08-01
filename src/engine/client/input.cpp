@@ -6,7 +6,7 @@
 
 #include <engine/keys.h>
 
-// this header is protected so you don't include it from anywere
+// this header is protected so you don't include it from anywhere
 #define KEYS_INCLUDE
 #include "keynames.h"
 #undef KEYS_INCLUDE

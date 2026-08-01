@@ -39,7 +39,7 @@ CURRENT:
 		// RRRRRRRR
 		// RRRRRRRR
 
-	if the token isn't explicitely set by any means, it must be set to
+	if the token isn't explicitly set by any means, it must be set to
 	0xffffffff
 
 	chunk header: 2-3 bytes
@@ -315,7 +315,7 @@ private:
 class CNetConnection
 {
 	// TODO: is this needed because this needs to be aware of
-	// the ack sequencing number and is also responible for updating
+	// the ack sequencing number and is also responsible for updating
 	// that. this should be fixed.
 	friend class CNetRecvUnpacker;
 

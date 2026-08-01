@@ -126,7 +126,7 @@ int CNetClient::Send(CNetChunk *pChunk, TOKEN Token, CSendCBData *pCallbackData)
 
 		if(pChunk->m_ClientID == -1 && net_addr_comp(&pChunk->m_Address, m_Connection.PeerAddress(), true) == 0)
 		{
-			// upgrade the packet, now that we know its recipent
+			// upgrade the packet, now that we know its recipient
 			pChunk->m_ClientID = 0;
 		}
 
@@ -142,7 +142,7 @@ int CNetClient::Send(CNetChunk *pChunk, TOKEN Token, CSendCBData *pCallbackData)
 			}
 			else
 			{
-				dbg_assert(pChunk->m_ClientID == 0, "errornous client id");
+				dbg_assert(pChunk->m_ClientID == 0, "erroneous client id");
 				m_Connection.SendPacketConnless((const char *)pChunk->m_pData, pChunk->m_DataSize);
 			}
 		}
@@ -156,7 +156,7 @@ int CNetClient::Send(CNetChunk *pChunk, TOKEN Token, CSendCBData *pCallbackData)
 		}
 
 		int Flags = 0;
-		dbg_assert(pChunk->m_ClientID == 0, "errornous client id");
+		dbg_assert(pChunk->m_ClientID == 0, "erroneous client id");
 
 		if(pChunk->m_Flags & NETSENDFLAG_VITAL)
 			Flags = NET_CHUNKFLAG_VITAL;

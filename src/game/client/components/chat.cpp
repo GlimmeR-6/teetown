@@ -496,7 +496,7 @@ void CChat::EnableMode(int Mode, const char *pText)
 
 	m_Mode = Mode;
 
-	if(pText) // optional text to initalize with
+	if(pText) // optional text to initialize with
 		m_Input.Set(pText);
 	else if(m_Mode == m_ChatBufferMode)
 		m_Input.Set(m_aChatBuffer);

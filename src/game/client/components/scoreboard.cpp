@@ -779,14 +779,14 @@ void CScoreboard::RenderNetworkQuality(float x, float w)
 	float y = 0.0f;
 
 	const int NumBars = 5;
-	int ScoreThresolds[NumBars] = {INT_MAX, 1000, 250, 50, -80};
+	int ScoreThresholds[NumBars] = {INT_MAX, 1000, 250, 50, -80};
 	CUIRect BarRect = {
 		x - 4.0f,
 		y + LineHeight,
 		6.0f,
 		LineHeight};
 
-	for(int Bar = 0; Bar < NumBars && Score <= ScoreThresolds[Bar]; Bar++)
+	for(int Bar = 0; Bar < NumBars && Score <= ScoreThresholds[Bar]; Bar++)
 	{
 		BarRect.x += BarRect.w + 3.0f;
 		CUIRect LocalBarRect = BarRect;

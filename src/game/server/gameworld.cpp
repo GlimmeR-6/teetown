@@ -194,7 +194,7 @@ void CGameWorld::Tick()
 			for(CEntity *pEnt = m_apFirstEntityTypes[i]; pEnt;)
 			{
 				m_pNextTraverseEntity = pEnt->m_pNextTypeEntity;
-				pEnt->TickDefered();
+				pEnt->TickDeferred();
 				pEnt = m_pNextTraverseEntity;
 			}
 	}

@@ -237,7 +237,7 @@ MACRO_CONFIG_STR(EcBindaddr, ec_bindaddr, 128, "localhost", CFGFLAG_SAVE | CFGFL
 MACRO_CONFIG_INT(EcPort, ec_port, 0, 0, 0, CFGFLAG_SAVE | CFGFLAG_ECON, "Port to use for the external console")
 MACRO_CONFIG_STR(EcPassword, ec_password, 32, "", CFGFLAG_SAVE | CFGFLAG_ECON, "External console password")
 MACRO_CONFIG_INT(EcBantime, ec_bantime, 0, 0, 1440, CFGFLAG_SAVE | CFGFLAG_ECON, "The time a client gets banned if econ authentication fails. 0 just closes the connection")
-MACRO_CONFIG_INT(EcAuthTimeout, ec_auth_timeout, 30, 1, 120, CFGFLAG_SAVE | CFGFLAG_ECON, "Time in seconds before the the econ authentification times out")
+MACRO_CONFIG_INT(EcAuthTimeout, ec_auth_timeout, 30, 1, 120, CFGFLAG_SAVE | CFGFLAG_ECON, "Time in seconds before the the econ authentication times out")
 MACRO_CONFIG_INT(EcOutputLevel, ec_output_level, 1, 0, 2, CFGFLAG_SAVE | CFGFLAG_ECON, "Adjusts the amount of information in the external console")
 
 MACRO_CONFIG_INT(NetTcpAbortOnClose, net_tcp_abort_on_close, 0, 0, 1, CFGFLAG_SAVE | CFGFLAG_SERVER | CFGFLAG_ECON, "Aborts tcp connection on close")

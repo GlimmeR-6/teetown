@@ -526,7 +526,7 @@ void IGameController::SetGameState(EGameState GameState, int Timer)
 				}
 				else if(Timer > 0)
 				{
-					// run warmup for a specific time intervall
+					// run warmup for a specific time interval
 					m_GameState = GameState;
 					m_GameStateTimer = Timer * Server()->TickSpeed();
 				}

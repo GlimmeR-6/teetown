@@ -226,7 +226,7 @@ int CSnapshotDelta::CreateDelta(const CSnapshot *pFrom, CSnapshot *pTo, void *pD
 	}
 
 	GenerateHash(Hashlist, pFrom);
-	int aPastIndecies[1024];
+	int aPastIndices[1024];
 
 	// fetch previous indices
 	// we do this as a separate pass because it helps the cache
@@ -234,7 +234,7 @@ int CSnapshotDelta::CreateDelta(const CSnapshot *pFrom, CSnapshot *pTo, void *pD
 	for(i = 0; i < NumItems; i++)
 	{
 		pCurItem = pTo->GetItem(i); // O(1) .. O(n)
-		aPastIndecies[i] = GetItemIndexHashed(pCurItem->Key(), Hashlist); // O(n) .. O(n^n)
+		aPastIndices[i] = GetItemIndexHashed(pCurItem->Key(), Hashlist); // O(n) .. O(n^n)
 	}
 
 	for(i = 0; i < NumItems; i++)
@@ -242,7 +242,7 @@ int CSnapshotDelta::CreateDelta(const CSnapshot *pFrom, CSnapshot *pTo, void *pD
 		// do delta
 		ItemSize = pTo->GetItemSize(i); // O(1) .. O(n)
 		pCurItem = pTo->GetItem(i); // O(1) .. O(n)
-		PastIndex = aPastIndecies[i];
+		PastIndex = aPastIndices[i];
 
 		bool IncludeSize = pCurItem->Type() >= MAX_NETOBJSIZES || !m_aItemSizes[pCurItem->Type()];
 
@@ -589,7 +589,7 @@ int *CSnapshotBuilder::GetItemData(int Key) const
 
 int CSnapshotBuilder::Finish(void *pSnapdata)
 {
-	// flattern and make the snapshot
+	// flatten and make the snapshot
 	CSnapshot *pSnap = (CSnapshot *)pSnapdata;
 	int OffsetSize = sizeof(int) * m_NumItems;
 	int KeySize = sizeof(int) * m_NumItems;

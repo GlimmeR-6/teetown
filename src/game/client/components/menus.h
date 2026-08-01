@@ -52,7 +52,7 @@ private:
 	bool DoButton_GridHeader(const void *pID, const char *pText, bool Checked, int Align, const CUIRect *pRect, int Corners = CUIRect::CORNER_ALL);
 
 	float DoIndependentDropdownMenu(void *pID, const CUIRect *pRect, const char *pStr, float HeaderHeight, FDropdownCallback pfnCallback, bool *pActive);
-	void DoInfoBox(const CUIRect *pRect, const char *pLable, const char *pValue);
+	void DoInfoBox(const CUIRect *pRect, const char *pLabel, const char *pValue);
 
 	void DoJoystickBar(const CUIRect *pRect, float Current, float Tolerance, bool Active);
 	void DoButton_KeySelect(CButtonContainer *pButtonContainer, const char *pText, const CUIRect *pRect);

@@ -414,7 +414,7 @@ void *CDataFileReader::GetItem(int Index, int *pType, int *pID)
 
 	CDatafileItem *i = (CDatafileItem *)(m_pDataFile->m_Info.m_pItemStart + m_pDataFile->m_Info.m_pItemOffsets[Index]);
 	if(pType)
-		*pType = (i->m_TypeAndID >> 16) & 0xffff; // remove sign extention
+		*pType = (i->m_TypeAndID >> 16) & 0xffff; // remove sign extension
 	if(pID)
 		*pID = i->m_TypeAndID & 0xffff;
 	return (void *)(i + 1);
@@ -522,7 +522,7 @@ CDataFileWriter::CDataFileWriter()
 	m_File = 0;
 	m_pItemTypes = static_cast<CItemTypeInfo *>(mem_alloc(sizeof(CItemTypeInfo) * MAX_ITEM_TYPES));
 	m_pItems = static_cast<CItemInfo *>(mem_alloc(sizeof(CItemInfo) * MAX_ITEMS));
-	m_pDatas = static_cast<CDataInfo *>(mem_alloc(sizeof(CDataInfo) * MAX_DATAS));
+	m_pDatas = static_cast<CDataInfo *>(mem_alloc(sizeof(CDataInfo) * MAX_DATA));
 }
 
 CDataFileWriter::~CDataFileWriter()
